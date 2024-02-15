@@ -1,0 +1,45 @@
+import turtle
+import random
+
+# Set up the screen
+wn = turtle.Screen()
+wn.bgcolor("black")
+wn.title("Generative Art Example")
+
+# Create a turtle for drawing
+artist = turtle.Turtle()
+artist.speed(0)  # Fastest drawing speed
+
+# Define a list of colors to choose from
+colors = ["red", "green", "blue", "yellow", "purple", "orange", "white"]
+
+# Function to draw a circle with a random color at a random position
+def draw_random_circle():
+    artist.up()  # Lift the pen up so it doesn't draw lines while moving
+    x = random.randint(-200, 200)
+    y = random.randint(-200, 200)
+    artist.goto(x, y)
+    artist.down()  # Put the pen down to start drawing
+    
+    # Choose a random color
+    color = random.choice(colors)
+    artist.fillcolor(color)
+    
+    # Start filling the color
+    artist.begin_fill()
+    
+    # Draw a circle
+    artist.circle(random.randint(10, 100))
+    
+    # End filling the color
+    artist.end_fill()
+
+# Draw 50 random circles
+for _ in range(50):
+    draw_random_circle()
+
+# Hide the turtle cursor and display the result
+artist.hideturtle()
+
+# Keep the window open until it is clicked
+wn.exitonclick()
